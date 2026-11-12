@@ -1,0 +1,171 @@
+/* Off The Reef — offthereef.com
+   Palette taken from the walk from Bank Road to the reef. */
+:root {
+  --paper: #fffdfc;
+  --ink: #17313b;
+  --muted: #566a71;
+  --rule: #e6dcd8;
+  --sand: #f2d4cb;      /* pink sand */
+  --sand-deep: #e3b6a8;
+  --seagrape: #5d7b3e;
+  --shallow: #9fdbd3;   /* water inside the reef */
+  --reef: #1d7f7c;      /* links, buttons */
+  --reef-dark: #145d5b;
+  --deep: #164a63;      /* the Atlantic past the reef */
+  --road: #b9b3ad;
+
+  --serif: "Literata", Georgia, serif;
+  --sans: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --measure: 66ch;
+  --gutter: clamp(16px, 5vw, 48px);
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  font-optical-sizing: auto;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--reef); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+a:hover { color: var(--reef-dark); }
+:focus-visible { outline: 3px solid var(--reef); outline-offset: 3px; border-radius: 2px; }
+
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 var(--gutter); }
+.prose { max-width: var(--measure); }
+
+/* Header */
+.site-head {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: 1.25rem; padding-bottom: 1.25rem;
+}
+.wordmark {
+  font-family: var(--serif); font-weight: 600; font-size: 1.25rem;
+  color: var(--ink); text-decoration: none; letter-spacing: -0.01em;
+}
+.site-nav { display: flex; gap: 1.25rem; flex-wrap: wrap; font-family: var(--sans); font-size: 0.95rem; }
+.site-nav a { color: var(--ink); text-decoration: none; }
+.site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--reef); text-decoration: underline; }
+
+/* Headings */
+h1, h2, h3 { font-family: var(--serif); line-height: 1.15; letter-spacing: -0.015em; margin: 0 0 0.6em; }
+h1 { font-size: clamp(2.6rem, 7vw, 5rem); font-weight: 500; }
+h2 { font-size: clamp(1.7rem, 3.4vw, 2.4rem); font-weight: 500; }
+h3 { font-size: 1.2rem; font-weight: 600; }
+p { margin: 0 0 1.1em; }
+.lede { font-size: clamp(1.15rem, 2vw, 1.4rem); line-height: 1.55; color: var(--ink); max-width: 40ch; }
+
+/* Hero */
+.hero { padding-top: clamp(2rem, 6vw, 4.5rem); }
+.hero h1 { max-width: 12ch; }
+.actions { display: flex; gap: 0.75rem 1.25rem; flex-wrap: wrap; align-items: center; margin-top: 1.75rem; }
+.btn {
+  display: inline-block; font-family: var(--sans); font-weight: 600; font-size: 1rem;
+  background: var(--reef); color: #fff; text-decoration: none;
+  padding: 0.85rem 1.4rem; border-radius: 999px;
+}
+.btn:hover { background: var(--reef-dark); color: #fff; }
+.link-quiet { font-family: var(--sans); font-weight: 500; color: var(--ink); }
+
+/* The cross-section: Bank Road to the Atlantic */
+.section-cut { margin-top: clamp(2.5rem, 6vw, 4rem); }
+.section-cut svg { width: 100%; height: auto; display: block; }
+.cut-labels {
+  display: grid;
+  grid-template-columns: 8fr 14fr 12fr 14fr 22fr 6fr 24fr;
+  font-family: var(--sans); font-size: 0.8rem; color: var(--muted);
+  border-top: 1px solid var(--rule); padding-top: 0.5rem; margin-top: 0.25rem;
+}
+.cut-labels span { padding-right: 0.25rem; line-height: 1.3; }
+.cut-labels .here { color: var(--ink); font-weight: 600; }
+@media (max-width: 640px) {
+  .cut-labels { grid-template-columns: repeat(4, 1fr); row-gap: 0.4rem; }
+  .cut-labels span::before { content: ""; display: inline-block; width: 0.6em; height: 0.6em; border-radius: 50%; margin-right: 0.35em; background: var(--dot, var(--road)); vertical-align: 0.05em; }
+}
+
+/* Sections */
+.block { padding-top: clamp(3rem, 8vw, 6rem); }
+.split { display: grid; grid-template-columns: 1fr; gap: 2rem 4rem; }
+@media (min-width: 860px) { .split { grid-template-columns: 1.2fr 1fr; align-items: start; } }
+
+.facts { list-style: none; padding: 0; margin: 0; font-family: var(--sans); font-size: 0.98rem; }
+.facts li { display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--rule); }
+.facts li:first-child { border-top: 1px solid var(--rule); }
+.facts .k { color: var(--muted); }
+.facts .v { text-align: right; }
+
+/* Photos */
+.photos { display: grid; gap: 12px; grid-template-columns: repeat(2, 1fr); margin-top: 2rem; }
+@media (min-width: 860px) { .photos { grid-template-columns: repeat(4, 1fr); } .photos .wide { grid-column: span 2; grid-row: span 2; } }
+.photo { margin: 0; background: var(--sand); aspect-ratio: 4 / 3; border-radius: 6px; overflow: hidden; position: relative; }
+.photos .wide { aspect-ratio: auto; min-height: 220px; }
+.photo img { width: 100%; height: 100%; object-fit: cover; }
+.photo figcaption {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 0.5rem 0.75rem;
+  font-family: var(--sans); font-size: 0.82rem; color: var(--ink);
+}
+.photo.empty { border: 2px dashed var(--sand-deep); background: #fbefeb; display: flex; align-items: center; justify-content: center; }
+.photo.empty figcaption { position: static; text-align: center; }
+
+/* Beach band */
+.water {
+  margin-top: clamp(3rem, 8vw, 6rem);
+  background: linear-gradient(180deg, var(--shallow) 0%, #7cc9c4 100%);
+  padding: clamp(3rem, 8vw, 5rem) 0;
+}
+.water + .deep { margin-top: 0; }
+.deep { background: var(--deep); color: #eaf4f6; padding: clamp(3rem, 8vw, 5rem) 0; }
+.deep a { color: #bfeee8; }
+.deep a:hover { color: #fff; }
+.deep .btn { background: #fff; color: var(--deep); }
+.deep .btn:hover { background: var(--sand); color: var(--deep); }
+
+/* Booking steps (a real sequence) */
+.steps { counter-reset: step; list-style: none; padding: 0; margin: 1.5rem 0 0; max-width: var(--measure); }
+.steps li { counter-increment: step; position: relative; padding-left: 2.6rem; margin-bottom: 1rem; }
+.steps li::before {
+  content: counter(step); position: absolute; left: 0; top: 0.1rem;
+  width: 1.8rem; height: 1.8rem; border-radius: 50%;
+  border: 1px solid currentColor; font-family: var(--sans); font-size: 0.85rem;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* FAQ */
+.faq { max-width: var(--measure); margin-top: 1.5rem; }
+.faq details { border-bottom: 1px solid var(--rule); padding: 0.9rem 0; }
+.faq details:first-child { border-top: 1px solid var(--rule); }
+.faq summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-family: var(--sans); font-weight: 400; color: var(--reef); }
+.faq details[open] summary::after { content: "–"; }
+.faq details p { margin: 0.6rem 0 0; }
+
+/* Guide pages */
+.guide h2 { margin-top: 2.5rem; }
+.guide ul { padding-left: 1.2rem; }
+.guide li { margin-bottom: 0.5rem; }
+.note { font-family: var(--sans); font-size: 0.92rem; color: var(--muted); }
+
+/* Signup */
+.signup { padding-top: clamp(3rem, 8vw, 5rem); padding-bottom: clamp(3rem, 8vw, 5rem); }
+
+/* Footer */
+.site-foot { border-top: 1px solid var(--rule); padding: 2rem 0 3rem; font-family: var(--sans); font-size: 0.9rem; color: var(--muted); }
+.site-foot .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; }
+.site-foot a { color: var(--muted); }
+
+/* Placeholders the owners still need to fill. Remove the class once filled. */
+.todo { outline: 1.5px dashed #d08a74; outline-offset: 2px; background: #fff3ee; border-radius: 3px; padding: 0 0.15em; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .reef-foam { animation: foam 6s ease-in-out infinite; transform-origin: center; }
+  @keyframes foam { 0%, 100% { opacity: 0.95; } 50% { opacity: 0.45; } }
+}
